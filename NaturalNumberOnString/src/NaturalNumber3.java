@@ -88,6 +88,12 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
                 + "Violation of: there exists n: NATURAL (s = TO_STRING(n))";
 
         // TODO - fill in body
+        if (s.equals("0")){
+            this.createNewRep();
+        }
+        else{
+            this.rep = s;
+        }
 
     }
 
@@ -101,6 +107,14 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
         assert n != null : "Violation of: n is not null";
 
         // TODO - fill in body
+        if(n.isZero()){
+            this.createNewRep();
+        }
+        else { 
+            this.rep = n.toString();
+        }
+        
+
 
     }
 
@@ -148,13 +162,22 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
         assert k < RADIX : "Violation of: k < 10";
 
         // TODO - fill in body
-
-    }
+        if(this.rep.isEmpty()){
+            this.rep = k + "";
+        }
+        else { 
+            this.rep = this.rep + k + "";
+        }
+        }
 
     @Override
     public final int divideBy10() {
 
         // TODO - fill in body
+        if(!rep.isEmpy()){
+            
+
+        } 
 
         // This line added just to make the component compilable.
         return 0;
