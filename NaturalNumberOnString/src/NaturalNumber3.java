@@ -1,6 +1,8 @@
 import components.naturalnumber.NaturalNumber;
 import components.naturalnumber.NaturalNumberSecondary;
-
+/**
+ * Test
+ */
 /**
  * {@code NaturalNumber} represented as a {@code String} with implementations of
  * primary methods.
