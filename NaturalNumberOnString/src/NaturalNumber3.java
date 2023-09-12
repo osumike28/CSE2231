@@ -2,6 +2,7 @@ import components.naturalnumber.NaturalNumber;
 import components.naturalnumber.NaturalNumberSecondary;
 /**
  * Test
+ * Test2
  */
 /**
  * {@code NaturalNumber} represented as a {@code String} with implementations of
