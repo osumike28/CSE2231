@@ -174,13 +174,17 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
     public final int divideBy10() {
 
         // TODO - fill in body
+        String remainder = "0";
         if(!rep.isEmpy()){
-            
+            remainder = this.rep.substring(this.rep.length()-1);
+            this.rep = this.rep.substring(0, this.rep.length()-1)
+
 
         } 
 
+
         // This line added just to make the component compilable.
-        return 0;
+        return Integer.parseInt(remainder);
     }
 
     @Override
@@ -189,7 +193,7 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
         // TODO - fill in body
 
         // This line added just to make the component compilable.
-        return false;
+        return (this.rep.equals(""));
     }
 
 }
