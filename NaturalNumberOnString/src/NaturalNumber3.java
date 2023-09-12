@@ -37,7 +37,7 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
     private void createNewRep() {
 
         // Defult value of Natural Number
-        this.rep ='0';
+        this.rep ="";
 
 
     }
@@ -66,7 +66,13 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
     public NaturalNumber3(int i) {
         assert i >= 0 : "Violation of: i >= 0";
 
-        // TODO - fill in body
+        // TODO - f
+        if(i>0){
+            this.rep = "" + i;
+        }
+        else{
+            this.createNewRep();
+        }
 
     }
 
