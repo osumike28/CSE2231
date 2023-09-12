@@ -36,7 +36,9 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
      */
     private void createNewRep() {
 
-        // TODO - fill in body
+        // Defult value of Natural Number
+        this.rep ='0';
+
 
     }
 
@@ -49,7 +51,9 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
      */
     public NaturalNumber3() {
 
-        // TODO - fill in body
+        // Creates no args constructor 
+        this.createNewRep();
+
 
     }
 
