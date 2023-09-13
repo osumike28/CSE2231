@@ -1,9 +1,6 @@
 import components.naturalnumber.NaturalNumber;
 import components.naturalnumber.NaturalNumberSecondary;
-/**
- * Test
- * Test2
- */
+
 /**
  * {@code NaturalNumber} represented as a {@code String} with implementations of
  * primary methods.
@@ -17,7 +14,7 @@ import components.naturalnumber.NaturalNumberSecondary;
  *         else the decimal number whose ordinary depiction is $this.rep]
  * </pre>
  *
- * @author Put your name here
+ * @author Michael Harper and Elias Baalbaky
  *
  */
 public class NaturalNumber3 extends NaturalNumberSecondary {
@@ -88,12 +85,17 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
                 + "Violation of: there exists n: NATURAL (s = TO_STRING(n))";
 
         // TODO - fill in body
+
         if (s.equals("0")){
             this.createNewRep();
         }
         else{
             this.rep = s;
         }
+
+        for (int j = 0; j < this.rep.length(); j++) {
+        int x = Character.getNumericValue(this.rep.charAt(j));
+        this.digits.push(x);
 
     }
 
@@ -113,7 +115,9 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
         else { 
             this.rep = n.toString();
         }
-        
+        for (int j = 0; j < this.rep.length(); j++) {
+            int x = Character.getNumericValue(this.rep.charAt(j));
+            this.digits.push(x);
 
 
     }
@@ -190,10 +194,7 @@ public class NaturalNumber3 extends NaturalNumberSecondary {
     @Override
     public final boolean isZero() {
 
-        // TODO - fill in body
-
-        // This line added just to make the component compilable.
-        return (this.rep.equals(""));
+        return (this.rep.equals("0"));
     }
 
 }
