@@ -116,8 +116,8 @@ public class Map4<K, V> extends MapSecondary<K, V> {
      * No-argument constructor.
      */
     public Map4() {
-
-        // TODO - fill in body
+        // Defult no Args constuctor 
+        this.createNewRep(DEFAULT_HASH_TABLE_SIZE);
 
     }
 
@@ -130,8 +130,10 @@ public class Map4<K, V> extends MapSecondary<K, V> {
      * @ensures this = {}
      */
     public Map4(int hashTableSize) {
-
-        // TODO - fill in body
+        // Comment here 
+        //
+        //
+        this.createNewRep(hashTableSize);
 
     }
 
