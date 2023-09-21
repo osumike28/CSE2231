@@ -1,4 +1,11 @@
 import components.map.Map;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+
+
+
 
 /**
  * JUnit test fixture for {@code Map<String, String>}'s constructor and kernel
@@ -77,7 +84,98 @@ public abstract class MapTest {
         return map;
     }
 
-    // TODO - add test cases for constructor, add, remove, removeAny, value,
-    // hasKey, and size
+    @Test 
+    public final void testNoArgumentConstructor() {
+        // creates test maps
+        Map<String, String> map = this.constructorTest();
+        Map<String, String> mapExpected = this.constructorRef();
+        
+        // test
+        assertEquals(map, mapExpected);
+    }
+   
+    @Test 
+    public final void testAddSingle() {
+        // creates test maps
+        Map<String, String> map = this.constructorTest();
+        Map<String, String> mapExpected = this.createFromArgsRef("O,H");
+        
+        map.add("O", "H");
+        
+        // test
+        assertEquals(map, mapExpected);
+        
+    }
+    @Test 
+    public final void testAddMultiple() {
+        // creates test maps
+        Map<String, String> map = this.constructorTest();
+        Map<String, String> mapExpected = this.createFromArgsRef("O,H","1","O");
+        
+        map.add("O", "H");
+        map.add("1", "O");
+        
+        // test
+        assertEquals(map, mapExpected);     
+    }
+    
+    
+    @Test 
+    public final void testRemoveSingle() {
+        // creates test maps 
+        Map<String, String> map = this.createFromArgsRef("O,H");
+        Map<String, String> mapExpected = this.constructorRef();
+        
+        map.remove("O");
 
+        // test
+        assertEquals(map, mapExpected);
+        
+        
+    }   
+    
+    
+    @Test 
+    public final void testRemoveMultiple() {
+        // creates test maps
+        Map<String, String> map = this.createFromArgsTest("O", "H", "1", "O");
+        Map<String, String> mapExpected = this.constructorRef();
+        
+        map.remove("O");
+        map.remove("1");
+        
+        // test
+        assertEquals(map, mapExpected);     
+    }
+    
+    @Test
+    public final void testValueSingle() {
+     // creates test maps
+        Map<String, String> m = this.createFromArgsTest("O", "H");
+        
+        
+         
+        String valueExpected = "H";
+        String  value = m.value("O");
+        
+        
+        assertEquals(value, valueExpected);
+    }
+    
+    @Test
+    public final void testHasKeyTrue() {
+        Map<String, String> m = this.createFromArgsTest("O", "H");
+        
+        assertTrue(m.hasKey("O"));
+    }
+    
+    @Test
+    public final void testSizeMultiple() {
+        Map<String, String> m = this.createFromArgsTest("O", "H", "I", "O");
+        int sizeExpected = 2;
+        int size= m.size();
+        assertEquals(sizeExpected, size);
+    }
+    
 }
+
