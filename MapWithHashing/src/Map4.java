@@ -195,7 +195,9 @@ public class Map4<K, V> extends MapSecondary<K, V> {
         assert value != null : "Violation of: value is not null";
         assert !this.hasKey(key) : "Violation of: key is not in DOMAIN(this)";
 
-        // TODO - fill in body
+        int bucket = mod(key.hasCode(), this.hashTable.length());
+        this.hasTable[bucket].add(key, value);
+        this.size++;
 
     }
 
@@ -204,10 +206,11 @@ public class Map4<K, V> extends MapSecondary<K, V> {
         assert key != null : "Violation of: key is not null";
         assert this.hasKey(key) : "Violation of: key is in DOMAIN(this)";
 
-        // TODO - fill in body
+        int bucket = mod(key.hasCode(), this.hashTable.length());
+        this.size --;
 
         // This line added just to make the component compilable.
-        return null;
+        return this.hasTable(bucket.remove(key));
     }
 
     @Override
