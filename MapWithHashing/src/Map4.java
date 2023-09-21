@@ -76,10 +76,12 @@ public class Map4<K, V> extends MapSecondary<K, V> {
     private static int mod(int a, int b) {
         assert b > 0 : "Violation of: b > 0";
 
-        int modulus = a % b; 
-        TODO
-        if ( a < 0 && modulus != 0){
-            modulus = modulus +b;
+        // calculate modules 
+        int modulus = a % b;
+        
+        // Adjusts modulus for negative numbers
+        if (a < 0 && modulus != 0) {
+            modulus = modulus + b;
 
         }
 
@@ -110,12 +112,14 @@ public class Map4<K, V> extends MapSecondary<K, V> {
          */
         this.hashTable = new Map[hashTableSize];
 
+        // map size of 0
         this.size = 0;
-        for (int i = 0; i < hashTableSize; i++)
-        this.hashTable[i] = new Map2<>;
+        
+        // initializes each bucket with an empty map
+        for (int i = 0; i < hashTableSize; i++) {
+            this.hashTable[i] = new Map2<>();
+        }
 
-
-        // TODO - fill in rest of body
 
     }
 
@@ -127,7 +131,7 @@ public class Map4<K, V> extends MapSecondary<K, V> {
      * No-argument constructor.
      */
     public Map4() {
-        // Defult no Args constuctor 
+        // Defult no Args constuctor
         this.createNewRep(DEFAULT_HASH_TABLE_SIZE);
 
     }
@@ -141,7 +145,7 @@ public class Map4<K, V> extends MapSecondary<K, V> {
      * @ensures this = {}
      */
     public Map4(int hashTableSize) {
-        // Comment here 
+        // Comment here
         //
         //
         this.createNewRep(hashTableSize);
@@ -195,8 +199,14 @@ public class Map4<K, V> extends MapSecondary<K, V> {
         assert value != null : "Violation of: value is not null";
         assert !this.hasKey(key) : "Violation of: key is not in DOMAIN(this)";
 
-        int bucket = mod(key.hasCode(), this.hashTable.length());
-        this.hasTable[bucket].add(key, value);
+        // creates int bucket from hashcode
+        int bucket = mod(key.hashCode(), this.hashTable.length);
+        
+        // adds keys to bucket
+        
+        this.hashTable[bucket].add(key, value);
+        
+        //Increments map size
         this.size++;
 
     }
@@ -206,50 +216,76 @@ public class Map4<K, V> extends MapSecondary<K, V> {
         assert key != null : "Violation of: key is not null";
         assert this.hasKey(key) : "Violation of: key is in DOMAIN(this)";
 
-        int bucket = mod(key.hasCode(), this.hashTable.length());
-        this.size --;
+        // creates int bucket from hashcode
+        int bucket = mod(key.hashCode(), this.hashTable.length);
+        
+        // takes one of from bucket
+        this.size--;
 
-        // This line added just to make the component compilable.
-        return this.hasTable[bucket].remove(key);
+        // removes pairs from bucket
+        return this.hashTable[bucket].remove(key);
     }
 
     @Override
     public final Pair<K, V> removeAny() {
         assert this.size() > 0 : "Violation of: this /= empty_set";
 
-        // TODO - fill in body
+        // single point of control
+        boolean test = true;
+        int index = 0;
 
-        // This line added just to make the component compilable.
-        return null;
+        // loop that sreaches for the empty bucket 
+        while (test && index < this.hashTable.length) {
+            if (this.hashTable[index].size() > 0) {
+                test = false;
+            }
+            index++;
+        }
+        // adjusts index
+        index--; 
+        
+        // Decreases size map
+        this.size--;
+        
+        // removes pair from bucket
+        return this.hashTable[index].removeAny();
+
     }
 
     @Override
     public final V value(K key) {
         assert key != null : "Violation of: key is not null";
         assert this.hasKey(key) : "Violation of: key is in DOMAIN(this)";
+       
+        // creates int bucket index from hashcode, single point of control
+        int hashCode = key.hashCode();
+        int bucketIndex = mod(hashCode, this.hashTable.length);
+        
+        // finds bucket using the index
+        Map<K, V> bucket = this.hashTable[bucketIndex];
 
-        // TODO - fill in body
+        // returns whats (value) in key
+        return bucket.value(key);
 
-        // This line added just to make the component compilable.
-        return null;
+
     }
 
     @Override
     public final boolean hasKey(K key) {
         assert key != null : "Violation of: key is not null";
 
-        // TODO - fill in body
+        // initalize hashCode and index from the has code of key
+        int hashCode = key.hashCode();
+        int index = mod(hashCode, this.hashTable.length);
+        
+        // checks if keys are in the bucket
+        return this.hashTable[index].hasKey(key);
 
-        // This line added just to make the component compilable.
-        return false;
     }
 
     @Override
     public final int size() {
-
-        // TODO - fill in body
-
-        // This line added just to make the component compilable.
+        // retuns the number of pairs 
         return this.size;
     }
 
