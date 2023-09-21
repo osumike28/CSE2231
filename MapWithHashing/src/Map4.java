@@ -2,6 +2,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import components.map.Map;
+import components.map.Map2;
 import components.map.MapSecondary;
 
 /**
@@ -108,6 +109,11 @@ public class Map4<K, V> extends MapSecondary<K, V> {
          * conversion, though it cannot fail.
          */
         this.hashTable = new Map[hashTableSize];
+
+        this.size = 0;
+        for (int i = 0; i < hashTableSize; i++)
+        this.hashTable[i] = new Map2<>;
+
 
         // TODO - fill in rest of body
 
