@@ -210,7 +210,7 @@ public class Map4<K, V> extends MapSecondary<K, V> {
         this.size --;
 
         // This line added just to make the component compilable.
-        return this.hasTable[bucket.remove];
+        return this.hasTable[bucket].remove();
     }
 
     @Override
