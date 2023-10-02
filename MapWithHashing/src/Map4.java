@@ -200,7 +200,7 @@ public class Map4<K, V> extends MapSecondary<K, V> {
         assert !this.hasKey(key) : "Violation of: key is not in DOMAIN(this)";
 
         // creates int bucket from hashcode
-        int bucket = mod(key.hashCode(), this.hashTable.length);
+        int bucket = mod(key.hashCode(), this.hashTable.length());
         
         // adds keys to bucket
         
