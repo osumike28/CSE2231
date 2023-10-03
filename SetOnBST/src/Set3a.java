@@ -193,11 +193,32 @@ public class Set3a<T extends Comparable<T>> extends SetSecondary<T> {
         assert x != null : "Violation of: x is not null";
         assert t.size() > 0 : "Violation of: x is in labels(t)";
 
-        // TODO - fill in body
+        BinaryTree<T> leftSide = t.newInstance();
+        BinaryTree<T> righSide = t.newInstance();
 
-        // This line added just to make the component compilable.
-        return null;
+        T remove = t.disassemble(leftSide, rightSide);
+        T remove;
+
+        if(root.equals(x)){
+
+            removed = root;
+        if (right.size() > 0) {
+            T small= removeSmallest(rightSide);
+            t.assemble(small, leftSide, rightSide);
+        } else {
+            t.transferFrom(leftSide);
+        }
+    } else {
+        if (x.compareTo(root) > 0) {
+            removed = removeFromTree(rightSide, x);
+        } else {
+            removed = removeFromTree(leftSide, x);
+        }
+        t.assemble(root, leftSide, rightSide);
     }
+
+    return removed;
+}
 
     /**
      * Creator of initial representation.
