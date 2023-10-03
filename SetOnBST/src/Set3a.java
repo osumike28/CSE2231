@@ -201,7 +201,7 @@ public class Set3a<T extends Comparable<T>> extends SetSecondary<T> {
 
         if(root.equals(x)){
 
-            removed = root;
+            remove = root;
         if (right.size() > 0) {
             T small= removeSmallest(rightSide);
             t.assemble(small, leftSide, rightSide);
@@ -210,14 +210,14 @@ public class Set3a<T extends Comparable<T>> extends SetSecondary<T> {
         }
     } else {
         if (x.compareTo(root) > 0) {
-            removed = removeFromTree(rightSide, x);
+            remove = removeFromTree(rightSide, x);
         } else {
-            removed = removeFromTree(leftSide, x);
+            remove = removeFromTree(leftSide, x);
         }
         t.assemble(root, leftSide, rightSide);
     }
 
-    return removed;
+    return remove;
 }
 
     /**
