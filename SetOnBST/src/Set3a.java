@@ -211,6 +211,7 @@ public class Set3a<T extends Comparable<T>> extends SetSecondary<T> {
     } else {
         if (x.compareTo(root) > 0) {
             remove = removeFromTree(rightSide, x);
+        
         } else {
             remove = removeFromTree(leftSide, x);
         }
